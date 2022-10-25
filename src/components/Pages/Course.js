@@ -2,9 +2,13 @@ import React from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
 import { FaEye, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Course = ({courses}) => {
     const {  title, id,price, details, image_url, rating, total_view } = courses;
+    const handelToast = ()=>{
+        toast.success('Check Successfully!', { autoClose: 500 })
+      }
     return (
         <div >
       
@@ -35,7 +39,7 @@ const Course = ({courses}) => {
                 </Card.Text>
                <div> <h3> Price: $<span> {price} </span> </h3> </div> 
                
-            <Link to={`/courses/${id}`}><Button style={{width:'100%'}} className='mb-2'> Check Out </Button></Link>
+            <Link to={`/courses/${id}`}><Button style={{width:'100%'}} className='mb-2' onClick={handelToast}> Check Out </Button></Link>
             <Button style={{width:'100%'}}> Get Premium</Button>
             </Card.Body>
             
