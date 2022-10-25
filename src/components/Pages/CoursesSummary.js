@@ -1,9 +1,10 @@
 import React from "react";
 import { Button, Card, Col, Image,  } from "react-bootstrap";
 import { FaEye, FaStar } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 const CoursesSummary = ({ courses }) => {
-  const {  title,  details, image_url, rating, total_view } = courses;
+  const {  title, id,price, details, image_url, rating, total_view } = courses;
   return (
     <div >
       
@@ -32,9 +33,9 @@ const CoursesSummary = ({ courses }) => {
                             details
                     }
                 </Card.Text>
-                
+               <div> <h3> Price: $<span> {price} </span> </h3> </div> 
                
-            <Button style={{width:'100%'}}> Get Preimum </Button>
+            <Link to={`/courses/${id}`}><Button style={{width:'100%'}}> Get Preimum </Button></Link>
             </Card.Body>
             
         </Card>
