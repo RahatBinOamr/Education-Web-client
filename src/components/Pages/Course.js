@@ -1,12 +1,12 @@
-import React from "react";
-import { Button, Card, Col, Image,  } from "react-bootstrap";
+import React from 'react';
+import { Button, Card, Col, Image } from 'react-bootstrap';
 import { FaEye, FaStar } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const CoursesSummary = ({ courses }) => {
-  const {  title, id,price, details, image_url, rating, total_view } = courses;
-  return (
-    <div >
+const Course = ({courses}) => {
+    const {  title, id,price, details, image_url, rating, total_view } = courses;
+    return (
+        <div >
       
         <Col>
         <Card className="mb-5">
@@ -35,7 +35,7 @@ const CoursesSummary = ({ courses }) => {
                 </Card.Text>
                <div> <h3> Price: $<span> {price} </span> </h3> </div> 
                
-            <Link to={`/courses/${id}`}><Button style={{width:'100%'}} className='mb-2'> Check Out</Button></Link>
+            <Link to={`/courses/${id}`}><Button style={{width:'100%'}} className='mb-2'> Check Out </Button></Link>
             <Button style={{width:'100%'}}> Get Premium</Button>
             </Card.Body>
             
@@ -43,7 +43,7 @@ const CoursesSummary = ({ courses }) => {
         </Col>
       
     </div>
-  );
+    );
 };
 
-export default CoursesSummary;
+export default Course;

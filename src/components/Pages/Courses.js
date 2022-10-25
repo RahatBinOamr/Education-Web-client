@@ -34,7 +34,7 @@ const Courses = () => {
                 {details}
             </Card.Text>
             <div> <h3> Price: $<span> {price} </span> </h3> </div> 
-            <Link to={`/category/${id}`}><Button style={{width:'100%'}}> Go All Courses </Button></Link>
+            <Link to='/home'><Button style={{width:'100%'}}> Go All Courses </Button></Link>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between">
             <div>

@@ -11,12 +11,12 @@ const LeftNavbar = () => {
     }, [])
 
     return (
-        <div>
-            <h4>All Category: {categories.length}</h4>
+        <div className='mt-4'>
+            {/* <h4>All Category: {categories.length}</h4> */}
             <div>
                 {
                     categories.map(category => <p key={category.id}>
-                        <Link
+                        <Link className='text-decoration-none'
                          to={`/category/${category.id}`}>{category.name}</Link>
                     </p>)
                 }
