@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layouts/Main";
 import ErrorPage from "../ErrorPage ";
 import Home from "../Home/Home";
+import Register from "../Pages/Category/Register";
 import Courses from "../Pages/Courses";
 import Category from "./Category/Category";
 
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
             path:'/courses/:id',
             element:<Courses></Courses>,
             loader:({params})=>fetch(`https://education-web-server-rahatbinoamr.vercel.app/courses/${params.id}`)
+        },
+        {
+            path:'/register',
+            element:<Register></Register>
         },
     ]
 }

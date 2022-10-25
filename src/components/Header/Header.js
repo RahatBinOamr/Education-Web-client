@@ -25,9 +25,13 @@ const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Link className='text-decoration-none text-black me-2' to='/home'> Home </Link>
-            <Link className='text-decoration-none text-black me-2' to='/blog'> Blog </Link>
+           
           </Nav>
+          <Link className='text-decoration-none text-black me-4' to='/home'> Home </Link>
+            <Link className='text-decoration-none text-black me-4' to='/faq'> FAQ </Link>
+            <Link className='text-decoration-none text-black me-4' to='/blog'> Blog </Link>
+          <Link className='text-decoration-none text-black me-4' to='/login'> Login </Link>
+          <Link className='text-decoration-none text-black me-4' to='/register'> Register </Link>
           <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         </Navbar.Collapse>
       </Container>
