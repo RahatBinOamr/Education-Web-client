@@ -18,7 +18,7 @@ export const router = createBrowserRouter([
         },
 
         {
-            path: '/CoursesCategory/:id',
+            path: '/category/:id',
             element: <Category></Category>,
             loader: ({params}) => fetch(`https://education-web-server-rahatbinoamr.vercel.app/CoursesCategory/${params.id}`)
         },
