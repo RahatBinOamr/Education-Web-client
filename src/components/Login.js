@@ -1,25 +1,21 @@
-import React from "react";
+import React from 'react';
+
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-const Register = () => {
+const Login = () => {
 const handelRegister = (e)=>{
     e.preventDefault()
     const form = e.target;
-    const name = form.name.value;
+    
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name,email,password);
+    console.log(email,password);
 }
 
   return (
     <div className=" w-50 h-100 m-auto">
       <Form onSubmit={handelRegister}>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" name="name" placeholder="Enter Your Name" />
-        </Form.Group>
-       
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" name="email" placeholder="Enter email" />
@@ -37,7 +33,7 @@ const handelRegister = (e)=>{
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
         <Button className="w-100" variant="primary" type="submit">
-         Register
+         Login
         </Button>
         <Button className="w-100 mt-3" variant="primary" type="submit">
          <FaGoogle/> Google Login
@@ -50,4 +46,5 @@ const handelRegister = (e)=>{
   );
 };
 
-export default Register;
+
+export default Login;

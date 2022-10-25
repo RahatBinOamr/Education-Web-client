@@ -30,9 +30,9 @@ const Header = () => {
           <Link className='text-decoration-none text-black me-4' to='/home'> Home </Link>
             <Link className='text-decoration-none text-black me-4' to='/faq'> FAQ </Link>
             <Link className='text-decoration-none text-black me-4' to='/blog'> Blog </Link>
-          <Link className='text-decoration-none text-black me-4' to='/login'> Login </Link>
           <Link className='text-decoration-none text-black me-4' to='/register'> Register </Link>
-          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
+          <Link className='text-decoration-none text-black me-4' to='/login'> Login </Link>
+          <ReactSwitch className='me-4' onChange={toggleTheme} checked={theme === "dark"} />
         </Navbar.Collapse>
       </Container>
     </Navbar>
