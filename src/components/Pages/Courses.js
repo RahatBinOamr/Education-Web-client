@@ -8,7 +8,7 @@ const Courses = () => {
     console.log(course)
     const { id, title, price,instructor, details, image_url, rating, total_view }  = course;
     return (
-        <Card className="mb-5">
+        <Card className="mb-5 mt-4">
         <Card.Header className='d-flex justify-content-between align-items-center'>
             <div className='d-flex'>
                 <Image

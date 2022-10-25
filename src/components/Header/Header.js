@@ -1,14 +1,19 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Image } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
+
 import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
+
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
+import ReactSwitch from 'react-switch';
 
+import { ThemeContext  } from '../../App';
 import img from '../../images/h-icon.jpg'
+
 const Header = () => {
+  const { theme, toggleTheme }= useContext(ThemeContext)
     return (
         <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -23,7 +28,7 @@ const Header = () => {
             <Link className='text-decoration-none text-black me-2' to='/home'> Home </Link>
             <Link className='text-decoration-none text-black me-2' to='/blog'> Blog </Link>
           </Nav>
-         
+          <ReactSwitch onChange={toggleTheme} checked={theme === "dark"} />
         </Navbar.Collapse>
       </Container>
     </Navbar>
