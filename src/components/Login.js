@@ -6,10 +6,10 @@ import { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from './Context/AuthProvider';
 const Login = () => {
-
+const navigate = useNavigate()
   const [error, setError] = useState('');
   const [accepted, setAccepted] = useState(false);
   const { signIn,providerLogin,githubLogin} = useContext(AuthContext);
@@ -24,6 +24,7 @@ const handelRegister = (e)=>{
         const user = result.user;
         console.log(user);
         form.reset();
+        navigate('/home')
         setError('');
        
     })

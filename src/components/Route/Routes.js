@@ -6,6 +6,7 @@ import Login from "../Login";
 import Category from "../Pages/Category/Category";
 import Register from "../Pages/Category/Register";
 import Courses from "../Pages/Courses";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -32,7 +33,7 @@ export const router = createBrowserRouter([
         },
         {
             path:'/courses/:id',
-            element:<Courses></Courses>,
+            element:<PrivateRoute><Courses></Courses></PrivateRoute>,
             loader:({params})=>fetch(`https://education-web-server-rahatbinoamr.vercel.app/courses/${params.id}`)
         },
         {
