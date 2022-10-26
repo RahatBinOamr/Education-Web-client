@@ -39,8 +39,9 @@ const CoursesSummary = ({ courses }) => {
                 </Card.Text>
                <div> <h3> Price: $<span> {price} </span> </h3> </div> 
                
-            <Link  to={`/courses/${id}`}><Button onClick={handelToast} style={{width:'100%'}} className='mb-2'> Check Out</Button></Link>
-            <Button style={{width:'100%'}}> Get Premium</Button>
+               <Link to={`/courses/${id}`}><Button style={{width:'100%'}}> Get Premium</Button></Link>
+            
+            <Button style={{width:'100%'}} className='mt-2' onClick={handelToast}> Check Out </Button>
             </Card.Body>
             
         </Card>

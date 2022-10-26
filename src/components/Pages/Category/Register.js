@@ -75,8 +75,8 @@ const handelGithub=()=>{
     <div className=" w-50 h-100 m-auto">
       <Form onSubmit={handelRegister}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" name="name" placeholder="Enter Your Name" />
+          <Form.Label>Full Name</Form.Label>
+          <Form.Control type="text" name="name" placeholder="Enter Your Full Name" />
         </Form.Group>
        
         <Form.Group className="mb-3" controlId="formBasicEmail">
