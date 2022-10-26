@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { Button, Image } from "react-bootstrap";
 
@@ -24,7 +25,13 @@ const Header = () => {
       .then(() => {})
       .catch((error) => console.error(error));
   };
-
+const [hovering,setHovering]=useState(false)
+  const handelmouse=()=>{
+    setHovering(true)
+  }
+  const handelMouseLeave=()=>{
+    setHovering(false)
+  }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -57,10 +64,12 @@ const Header = () => {
             <>
               {user?.uid ? (
                 <>
-                  {/* <span>{user?.displayName}</span> */}
-                  <Button variant="light" onClick={handleLogOut}>
+                  
+                  <Button className="me-3" variant="light" onClick={handleLogOut}>
                     Log out
                   </Button>
+                  <span className={hovering? "": 'd-none' }> <p className="text-danger  ">
+                  {user?.displayName}</p> </span>
                 </>
               ) : (
                 <>
@@ -84,10 +93,13 @@ const Header = () => {
 
             {user?.photoURL ? (
               <Image
-                style={{ height: "30px" }}
-                roundedCircle
-                src={user?.photoURL}
-              ></Image>
+             
+              onMouseEnter={handelmouse}
+              onMouseLeave ={handelMouseLeave}
+              style={{ height: "30px" }}
+              roundedCircle
+              src={user?.photoURL}
+            ></Image>
             ) : (
               <FaUser></FaUser>
             )}

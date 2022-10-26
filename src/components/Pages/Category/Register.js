@@ -4,10 +4,11 @@ import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { AuthContext } from "../../Context/AuthProvider";
 const Register = () => {
+  const navigate = useNavigate()
   const [error, setError]= useState('');
   const [accepted, setAccepted] = useState(false);
   const {createUser,updateUserProfile,providerLogin,githubLogin}= useContext(AuthContext)
@@ -26,7 +27,7 @@ const handelRegister = (e)=>{
         setError('');
         form.reset();
         handleUpdateUserProfile(name, photoURL);
-       
+       navigate('/')
        
     })
     .catch(e => {
@@ -82,17 +83,17 @@ const handelGithub=()=>{
       <Form onSubmit={handelRegister}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Full Name</Form.Label>
-          <Form.Control type="text" name="name" placeholder="Enter Your Full Name" />
+          <Form.Control type="text" name="name" placeholder="Enter Your Full Name" required />
         </Form.Group>
        
         <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Photo URL</Form.Label>
-                <Form.Control name="photoURL" type="text" placeholder="Phot URL" />
+                <Form.Control name="photoURL" type="text" placeholder="Phot URL" required />
             </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
-          <Form.Control type="email" name="email" placeholder="Enter email" />
+          <Form.Control type="email" name="email" placeholder="Enter email" required/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -101,6 +102,7 @@ const handelGithub=()=>{
             type="password"
             name="password"
             placeholder="Password"
+            required
           />
         </Form.Group>
       <span className="text-danger"> {error} </span>
