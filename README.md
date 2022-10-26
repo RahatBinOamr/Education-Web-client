@@ -3,12 +3,7 @@
 # server Code Link ::https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-RahatBinOamr
 
 # My Project statement
-*** Server site ***
-1. first express init and install cros nodemon
-2. Then create index.js file
-3. Then require index.js file and some work
-4. create category data component and load backend data . and require send get data send
-5. create courses data component and load backend data and require send get data .
+
 *** Client Site ***
 1. install react router dom bootstrap react bootstrap .
 2. then create router component and connection router from app.js component 
