@@ -1,3 +1,31 @@
+# Live Link :https://education-web-da81f.web.app
+# Client code Link: https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-RahatBinOamr
+# server Code Link ::https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-RahatBinOamr
+
+# My Project statement
+*** Server site ***
+1. first express init and install cros nodemon
+2. Then create index.js file
+3. Then require index.js file and some work
+4. create category data component and load backend data . and require send get data send
+5. create courses data component and load backend data and require send get data .
+*** Client Site ***
+1. install react router dom bootstrap react bootstrap .
+2. then create router component and connection router from app.js component 
+3. then create layout file and main component and connection element from router component 
+4. then create header component where course faq blog and conditional requirement login register and logOut profile picture and drack and light mode option
+5. create category component and load data from server site use deploy vercel site api
+6. connected main component header component and outlet hook
+7. create courses component and load data from sever api 
+8. install firebase 
+9. then create login sign in register google git hum emailPassword and change directory from useEffect hook 
+10. Then deploy firebase. 
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

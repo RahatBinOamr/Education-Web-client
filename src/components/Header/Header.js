@@ -49,7 +49,7 @@ const [hovering,setHovering]=useState(false)
           ></Nav>
           <Link className="text-decoration-none text-black me-4" to="/home">
             
-            Home
+            Course
           </Link>
           <Link className="text-decoration-none text-black me-4" to="/faq">
             
