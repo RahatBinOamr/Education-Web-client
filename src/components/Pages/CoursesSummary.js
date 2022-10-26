@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 const CoursesSummary = ({ courses }) => {
   const {  title, id,price, details, image_url, rating, total_view } = courses;
   const handelToast = ()=>{
-    toast.success('Check Successfully!', { autoClose: 500 })
+    toast.success('Check Layout page!', { autoClose: 500 })
   }
   const genereatePdf = ()=>{
     const doc = new jsPDF ('landscape','px','a4','false')

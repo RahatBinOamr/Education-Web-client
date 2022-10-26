@@ -7,7 +7,7 @@ import { jsPDF } from "jspdf";
 const Course = ({courses}) => {
     const {  title, id,price, details, image_url, rating, total_view } = courses;
     const handelToast = ()=>{
-        toast.success('Check Successfully!', { autoClose: 500 })
+        toast.success('Check Layout Page!', { autoClose: 500 })
       }
      
 
