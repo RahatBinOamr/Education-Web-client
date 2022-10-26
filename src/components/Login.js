@@ -1,3 +1,4 @@
+import { GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
@@ -11,7 +12,7 @@ const Login = () => {
 
   const [error, setError] = useState('');
   const [accepted, setAccepted] = useState(false);
-  const { signIn} = useContext(AuthContext);
+  const { signIn,providerLogin} = useContext(AuthContext);
 const handelRegister = (e)=>{
     e.preventDefault()
     const form = e.target;
@@ -32,6 +33,27 @@ const handelRegister = (e)=>{
     })
    
 }
+
+const handelGoogle = ()=>{
+  providerLogin()
+  .then((result) => {
+   
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+   
+    const user = result.user;
+   
+  }).catch((error) => {
+    
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    setError('')
+  });
+}
+
 const handleAccepted = event => {
   setAccepted(event.target.checked)
 }
@@ -59,7 +81,7 @@ const handleAccepted = event => {
         <Button  className="w-100" variant="primary" type="submit" disabled={!accepted}>
          Login
         </Button>
-        <Button className="w-100 mt-3" variant="primary" type="submit">
+        <Button onClick={handelGoogle} className="w-100 mt-3" variant="primary" type="submit">
          <FaGoogle/> Google Login
         </Button>
         <Button className="w-100 mt-3" variant="primary" type="submit">
