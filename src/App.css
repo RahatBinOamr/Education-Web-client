@@ -17,14 +17,16 @@
 }
 
 #dark {
-  background-color: #151415;
+  background-color: #2e2e2e;
+  /* color: #61dafb; */
 }
 #light .main {
   background-color: #fff;
 }
 
 #dark .main {
-  background-color: #151415;
+  background-color: #292829;
+  color: #61dafb;
 }
 .App-header {
   background-color: #282c34;

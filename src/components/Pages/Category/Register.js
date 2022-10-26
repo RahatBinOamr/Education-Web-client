@@ -43,7 +43,10 @@ const handleUpdateUserProfile = (name, photoURL) => {
 
   updateUserProfile(profile)
       .then(() => { })
-      .catch(error => console.error(error));
+      .catch(error => {console.error(error)
+      setError(error.message)
+      });
+
 }
 const handleAccepted = event => {
   setAccepted(event.target.checked)
@@ -54,9 +57,11 @@ const handelGoogle = ()=>{
    
     const user = result.user;
    console.log(user);
+   setError('');
   }).catch((error) => {
     
-   console.log(error.message)
+   console.log(error)
+   setError(error.message)
   });
 }
 const handelGithub=()=>{
@@ -64,10 +69,11 @@ const handelGithub=()=>{
   .then((result) => {
     const user = result.user;
     console.log(user)
-    
+    setError('');
   }).catch((error) => {
     
-   console.log(error.message);
+   console.log(error);
+   setError(error.message)
     
   });
 }

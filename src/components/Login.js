@@ -6,10 +6,12 @@ import { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate ,useLocation} from 'react-router-dom';
 import { AuthContext } from './Context/AuthProvider';
 const Login = () => {
 const navigate = useNavigate()
+const location = useLocation()
+const from = location?.state?.from?.pathname || '/';
   const [error, setError] = useState('');
   const [accepted, setAccepted] = useState(false);
   const { signIn,providerLogin,githubLogin} = useContext(AuthContext);
@@ -24,13 +26,15 @@ const handelRegister = (e)=>{
         const user = result.user;
         console.log(user);
         form.reset();
-        navigate('/home')
+        navigate(from, {replace:true})
         setError('');
+      
        
     })
     .catch(error => {
         console.error(error)
         setError(error.message);
+        
     })
    
 }
@@ -39,10 +43,12 @@ const handelGithub=()=>{
   .then((result) => {
     const user = result.user;
     console.log(user)
-    
+    setError('');
   }).catch((error) => {
     
-   console.log(error.message);
+   console.log(error);
+   setError(error.message)
+  
     
   });
 }
@@ -52,10 +58,12 @@ const handelGoogle = ()=>{
   .then((result) => {
     const user = result.user;
     console.log(user)
-   
+    setError('');
   }).catch((error) => {
     
-   console.log(error.message);
+   console.log(error);
+   setError(error.message)
+   
   });
 }
 
