@@ -1,14 +1,17 @@
+import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import { AuthContext } from "../../Context/AuthProvider";
 const Register = () => {
   const [error, setError]= useState('');
-  const {providerLogin,createUser,signIn,updateUserProfile}= useContext(AuthContext)
+  const [accepted, setAccepted] = useState(false);
+  const {createUser,updateUserProfile,providerLogin}= useContext(AuthContext)
 const handelRegister = (e)=>{
     e.preventDefault()
     const form = e.target;
@@ -43,7 +46,28 @@ const handleUpdateUserProfile = (name, photoURL) => {
       .then(() => { })
       .catch(error => console.error(error));
 }
-
+const handleAccepted = event => {
+  setAccepted(event.target.checked)
+}
+const handelGoogle = ()=>{
+  providerLogin()
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+   
+    const user = result.user;
+   
+  }).catch((error) => {
+    
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    
+    const email = error.customData.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    setError('')
+  });
+}
   return (
     <div className=" w-50 h-100 m-auto">
       <Form onSubmit={handelRegister}>
@@ -71,13 +95,15 @@ const handleUpdateUserProfile = (name, photoURL) => {
           />
         </Form.Group>
       <span className="text-danger"> {error} </span>
+      <span className=""> if you have account please <Link to='/login'>Login</Link> </span>
+
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check  onClick={handleAccepted} type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button className="w-100" variant="primary" type="submit">
+        <Button className="w-100" variant="primary" type="submit" disabled={!accepted}>
          Register
         </Button>
-        <Button className="w-100 mt-3" variant="primary" type="submit">
+        <Button onClick={handelGoogle} className="w-100 mt-3" variant="primary" type="submit" >
          <FaGoogle/> Google Login
         </Button>
         <Button className="w-100 mt-3" variant="primary" type="submit">

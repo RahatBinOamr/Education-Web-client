@@ -1,18 +1,40 @@
 import React from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
 
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { Link } from 'react-router-dom';
+import { AuthContext } from './Context/AuthProvider';
 const Login = () => {
+
+  const [error, setError] = useState('');
+  const [accepted, setAccepted] = useState(false);
+  const { signIn} = useContext(AuthContext);
 const handelRegister = (e)=>{
     e.preventDefault()
     const form = e.target;
-    
     const email = form.email.value;
     const password = form.password.value;
     console.log(email,password);
+    signIn(email, password)
+    .then(result => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        setError('');
+       
+    })
+    .catch(error => {
+        console.error(error)
+        setError(error.message);
+    })
+   
 }
-
+const handleAccepted = event => {
+  setAccepted(event.target.checked)
+}
   return (
     <div className=" w-50 h-100 m-auto">
       <Form onSubmit={handelRegister}>
@@ -29,10 +51,12 @@ const handelRegister = (e)=>{
             placeholder="Password"
           />
         </Form.Group>
+        <span className='text-danger'> {error} </span>
+        <span> if you have no account please <Link to='/register'> register </Link> </span>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
+          <Form.Check onClick={handleAccepted} type="checkbox" label="Check me out" />
         </Form.Group>
-        <Button className="w-100" variant="primary" type="submit">
+        <Button  className="w-100" variant="primary" type="submit" disabled={!accepted}>
          Login
         </Button>
         <Button className="w-100 mt-3" variant="primary" type="submit">

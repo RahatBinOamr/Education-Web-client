@@ -41,10 +41,10 @@ const Header = () => {
             <Link className='text-decoration-none text-black me-4' to='/faq'> FAQ </Link>
             <Link className='text-decoration-none text-black me-4' to='/blog'> Blog </Link>
          
-          <Nav>
+         
                         <>
                             {
-                                user?.uid ?
+                                user?.email ?
                                     <>
                                         <span>{user?.displayName}</span>
                                         <Button variant="light" onClick={handleLogOut}>Log out</Button>
@@ -68,7 +68,7 @@ const Header = () => {
                                 : <FaUser></FaUser>
                             }
                         </Link>
-                    </Nav>
+                    
           <ReactSwitch className='me-4' onChange={toggleTheme} checked={theme === "dark"} />
         </Navbar.Collapse>
       </Container>
