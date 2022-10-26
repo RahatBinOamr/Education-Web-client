@@ -44,7 +44,7 @@ const Header = () => {
          
                         <>
                             {
-                                user?.email ?
+                                user?.uid?
                                     <>
                                         <span>{user?.displayName}</span>
                                         <Button variant="light" onClick={handleLogOut}>Log out</Button>
@@ -52,13 +52,13 @@ const Header = () => {
                                     :
                                     <>
                                          <Link className='text-decoration-none text-black me-4' to='/register'> Register </Link>
-          <Link className='text-decoration-none text-black me-4' to='/login'> Login </Link>
+                                        <Link className='text-decoration-none text-black me-4' to='/login'> Login </Link>
                                     </>
                             }
 
 
                         </>
-                        <Link to="/profile">
+                        
                             {user?.photoURL ?
                                 <Image
                                     style={{ height: '30px' }}
@@ -67,7 +67,7 @@ const Header = () => {
                                 </Image>
                                 : <FaUser></FaUser>
                             }
-                        </Link>
+                        
                     
           <ReactSwitch className='me-4' onChange={toggleTheme} checked={theme === "dark"} />
         </Navbar.Collapse>

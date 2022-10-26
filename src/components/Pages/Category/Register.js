@@ -1,4 +1,3 @@
-import { GoogleAuthProvider } from "firebase/auth";
 import React from "react";
 import { useState } from "react";
 import { useContext } from "react";
@@ -11,7 +10,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const Register = () => {
   const [error, setError]= useState('');
   const [accepted, setAccepted] = useState(false);
-  const {createUser,updateUserProfile,providerLogin}= useContext(AuthContext)
+  const {createUser,updateUserProfile,providerLogin,githubLogin}= useContext(AuthContext)
 const handelRegister = (e)=>{
     e.preventDefault()
     const form = e.target;
@@ -52,20 +51,24 @@ const handleAccepted = event => {
 const handelGoogle = ()=>{
   providerLogin()
   .then((result) => {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
    
     const user = result.user;
-   
+   console.log(user);
   }).catch((error) => {
     
-    const errorCode = error.code;
-    const errorMessage = error.message;
+   console.log(error.message)
+  });
+}
+const handelGithub=()=>{
+  githubLogin()
+  .then((result) => {
+    const user = result.user;
+    console.log(user)
     
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    setError('')
+  }).catch((error) => {
+    
+   console.log(error.message);
+    
   });
 }
   return (
@@ -106,7 +109,7 @@ const handelGoogle = ()=>{
         <Button onClick={handelGoogle} className="w-100 mt-3" variant="primary" type="submit" >
          <FaGoogle/> Google Login
         </Button>
-        <Button className="w-100 mt-3" variant="primary" type="submit">
+        <Button onClick={handelGithub} className="w-100 mt-3" variant="primary" type="submit">
         <FaGithub className=""/> Git Hub
         </Button>
       </Form>

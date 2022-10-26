@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+
 import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
@@ -12,7 +12,7 @@ const Login = () => {
 
   const [error, setError] = useState('');
   const [accepted, setAccepted] = useState(false);
-  const { signIn,providerLogin} = useContext(AuthContext);
+  const { signIn,providerLogin,githubLogin} = useContext(AuthContext);
 const handelRegister = (e)=>{
     e.preventDefault()
     const form = e.target;
@@ -33,24 +33,28 @@ const handelRegister = (e)=>{
     })
    
 }
+const handelGithub=()=>{
+  githubLogin()
+  .then((result) => {
+    const user = result.user;
+    console.log(user)
+    
+  }).catch((error) => {
+    
+   console.log(error.message);
+    
+  });
+}
 
 const handelGoogle = ()=>{
   providerLogin()
   .then((result) => {
-   
-    const credential = GoogleAuthProvider.credentialFromResult(result);
-    const token = credential.accessToken;
-   
     const user = result.user;
+    console.log(user)
    
   }).catch((error) => {
     
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    
-    const email = error.customData.email;
-    const credential = GoogleAuthProvider.credentialFromError(error);
-    setError('')
+   console.log(error.message);
   });
 }
 
@@ -84,7 +88,7 @@ const handleAccepted = event => {
         <Button onClick={handelGoogle} className="w-100 mt-3" variant="primary" type="submit">
          <FaGoogle/> Google Login
         </Button>
-        <Button className="w-100 mt-3" variant="primary" type="submit">
+        <Button onClick={handelGithub} className="w-100 mt-3" variant="primary" type="submit">
         <FaGithub className=""/> Git Hub
         </Button>
       </Form>
