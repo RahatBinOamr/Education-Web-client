@@ -43,6 +43,7 @@ const handelGithub=()=>{
   .then((result) => {
     const user = result.user;
     console.log(user)
+    navigate(from, {replace:true})
     setError('');
   }).catch((error) => {
     
@@ -58,6 +59,7 @@ const handelGoogle = ()=>{
   .then((result) => {
     const user = result.user;
     console.log(user)
+    navigate(from, {replace:true})
     setError('');
   }).catch((error) => {
     

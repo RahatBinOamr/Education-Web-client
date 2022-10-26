@@ -1,13 +1,25 @@
 import React from 'react';
 import { Button, Card, Col, Image } from 'react-bootstrap';
-import { FaEye, FaStar } from 'react-icons/fa';
+import { FaDownload, FaEye, FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
-
+import { jsPDF } from "jspdf";
 const Course = ({courses}) => {
     const {  title, id,price, details, image_url, rating, total_view } = courses;
     const handelToast = ()=>{
         toast.success('Check Successfully!', { autoClose: 500 })
+      }
+     
+
+      const genereatePdf = ()=>{
+        const doc = new jsPDF ('landscape','px','a4','false')
+        // doc.addImage (image_url, 'PNG', 65 ,20,500,400);
+        doc.addPage()
+        doc.addFont('Helvertica','bold');
+        doc.text(60,60,title)
+        doc.text(60,80,price)
+        doc.text(60,100,details)
+        doc.save('a.pdf')
       }
     return (
         <div >
@@ -39,9 +51,9 @@ const Course = ({courses}) => {
                 </Card.Text>
                <div> <h3> Price: $<span> {price} </span> </h3> </div> 
                
-            <Link to={`/courses/${id}`}><Button style={{width:'100%'}}> Get Premium</Button></Link>
+            <Link to={`/courses/${id}`}><Button style={{width:'100%'}}  onClick={handelToast}> Get Premium</Button></Link>
             
-            <Button style={{width:'100%'}} className='mt-2' onClick={handelToast}> Check Out </Button>
+            <Button onClick={genereatePdf} style={{width:'100%'}} className='mt-2'> <FaDownload/> Download pdf </Button>
             </Card.Body>
             
         </Card>
