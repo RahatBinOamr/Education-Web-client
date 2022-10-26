@@ -6,11 +6,16 @@ import { toast } from 'react-toastify';
 import { jsPDF } from "jspdf";
 const Course = ({courses}) => {
     const {  title, id,price, details, image_url, rating, total_view } = courses;
+
+    
+/*  handelToast toast  start */
     const handelToast = ()=>{
         toast.success('Check Layout Page!', { autoClose: 500 })
       }
+      
+/*  handelToast toast  end */
      
-
+/*  react pdf generate start  */
       const genereatePdf = ()=>{
         const doc = new jsPDF ('landscape','px','a4','false')
         // doc.addImage (image_url, 'PNG', 65 ,20,500,400);
@@ -21,6 +26,7 @@ const Course = ({courses}) => {
         doc.text(60,100,details)
         doc.save('a.pdf')
       }
+      /*  react pdf generate end */
     return (
         <div >
       
