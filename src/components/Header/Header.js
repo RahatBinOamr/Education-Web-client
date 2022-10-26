@@ -1,19 +1,29 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Image } from 'react-bootstrap';
+import { Button, Image } from 'react-bootstrap';
 
 import Container from 'react-bootstrap/Container';
 
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import ReactSwitch from 'react-switch';
 
 import { ThemeContext  } from '../../App';
 import img from '../../images/h-icon.jpg'
+import { AuthContext } from '../Context/AuthProvider';
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext);
   const { theme, toggleTheme }= useContext(ThemeContext)
+
+  const handleLogOut = () => {
+    logOut()
+        .then(() => { })
+        .catch(error => console.error(error))
+}
+
     return (
         <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -30,8 +40,35 @@ const Header = () => {
           <Link className='text-decoration-none text-black me-4' to='/home'> Home </Link>
             <Link className='text-decoration-none text-black me-4' to='/faq'> FAQ </Link>
             <Link className='text-decoration-none text-black me-4' to='/blog'> Blog </Link>
-          <Link className='text-decoration-none text-black me-4' to='/register'> Register </Link>
+         
+          <Nav>
+                        <>
+                            {
+                                user?.uid ?
+                                    <>
+                                        <span>{user?.displayName}</span>
+                                        <Button variant="light" onClick={handleLogOut}>Log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                         <Link className='text-decoration-none text-black me-4' to='/register'> Register </Link>
           <Link className='text-decoration-none text-black me-4' to='/login'> Login </Link>
+                                    </>
+                            }
+
+
+                        </>
+                        <Link to="/profile">
+                            {user?.photoURL ?
+                                <Image
+                                    style={{ height: '30px' }}
+                                    roundedCircle
+                                    src={user?.photoURL}>
+                                </Image>
+                                : <FaUser></FaUser>
+                            }
+                        </Link>
+                    </Nav>
           <ReactSwitch className='me-4' onChange={toggleTheme} checked={theme === "dark"} />
         </Navbar.Collapse>
       </Container>
