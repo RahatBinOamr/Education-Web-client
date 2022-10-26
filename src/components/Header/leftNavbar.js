@@ -11,7 +11,7 @@ const LeftNavbar = () => {
     }, [])
 
     return (
-        <div className='mt-4'>
+        <div className='mt-4 '>
             {/* <h4>All Category: {categories.length}</h4> */}
             <div>
                 {

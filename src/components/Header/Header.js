@@ -13,6 +13,7 @@ import ReactSwitch from 'react-switch';
 import { ThemeContext  } from '../../App';
 import img from '../../images/h-icon.jpg'
 import { AuthContext } from '../Context/AuthProvider';
+import LeftNavbar from './leftNavbar';
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -68,8 +69,12 @@ const Header = () => {
                                 : <FaUser></FaUser>
                             }
                         
-                    
+                         
           <ReactSwitch className='me-4' onChange={toggleTheme} checked={theme === "dark"} />
+
+          <div className='d-lg-none'>
+                        <LeftNavbar></LeftNavbar>
+                    </div> 
         </Navbar.Collapse>
       </Container>
     </Navbar>
