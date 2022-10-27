@@ -26,7 +26,7 @@ const Header = () => {
       .catch((error) => console.error(error));
   };
 const [hovering,setHovering]=useState(false)
-  const handelmouse=()=>{
+  const handelMouseEnter=()=>{
     setHovering(true)
   }
   const handelMouseLeave=()=>{
@@ -94,7 +94,7 @@ const [hovering,setHovering]=useState(false)
             {user?.photoURL ? (
               <Image
              
-              onMouseEnter={handelmouse}
+              onMouseEnter={handelMouseEnter}
               onMouseLeave ={handelMouseLeave}
               style={{ height: "30px" }}
               roundedCircle
