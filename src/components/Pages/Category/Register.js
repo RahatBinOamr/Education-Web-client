@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import { AuthContext } from "../../Context/AuthProvider";
 const Register = () => {
@@ -24,10 +25,12 @@ const handelRegister = (e)=>{
     .then(result => {
         const user = result.user;
         console.log(user);
+
         setError('');
         form.reset();
         handleUpdateUserProfile(name, photoURL);
        navigate('/')
+       toast.success('Register successful!', { autoClose: 500 })
        
     })
     .catch(e => {
@@ -59,6 +62,7 @@ const handelGoogle = ()=>{
     const user = result.user;
    console.log(user);
    navigate('/')
+   toast.success('Register successful!', { autoClose: 500 })
    setError('');
   }).catch((error) => {
     
@@ -72,6 +76,7 @@ const handelGithub=()=>{
     const user = result.user;
     console.log(user)
     navigate('/')
+    toast.success('Register successful!', { autoClose: 500 })
     setError('');
   }).catch((error) => {
     

@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 const Courses = () => {
     const course = useLoaderData()
     console.log(course)
-    const { id, title, price,instructor, details, image_url, rating, total_view }  = course;
+    const {  title, price,instructor, details, image_url, rating, total_view }  = course;
     const handelToast = ()=>{
         toast.success('Back to courses!', { autoClose: 500 })
       }

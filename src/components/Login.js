@@ -7,6 +7,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate ,useLocation} from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContext } from './Context/AuthProvider';
 const Login = () => {
 const navigate = useNavigate()
@@ -27,6 +28,7 @@ const handelRegister = (e)=>{
         console.log(user);
         form.reset();
         navigate(from, {replace:true})
+        toast.success('Login successful!', { autoClose: 500 })
         setError('');
       
        
@@ -44,6 +46,7 @@ const handelGithub=()=>{
     const user = result.user;
     console.log(user)
     navigate(from, {replace:true})
+    toast.success('Login successful!', { autoClose: 500 })
     setError('');
   }).catch((error) => {
     
@@ -60,6 +63,7 @@ const handelGoogle = ()=>{
     const user = result.user;
     console.log(user)
     navigate(from, {replace:true})
+    toast.success('Login successful!', { autoClose: 500 })
     setError('');
   }).catch((error) => {
     
@@ -72,6 +76,7 @@ const handelGoogle = ()=>{
 const handleAccepted = event => {
   setAccepted(event.target.checked)
 }
+
   return (
     <div className=" w-50 h-100 m-auto">
       <Form onSubmit={handelRegister}>
