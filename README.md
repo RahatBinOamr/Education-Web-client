@@ -2,6 +2,16 @@
 # Client code Link: https://github.com/programming-hero-web-course1/b610-learning-platform-client-side-RahatBinOamr
 # server Code Link ::https://github.com/programming-hero-web-course1/b610-lerning-platform-server-side-RahatBinOamr
 
+
+# Project api
+1.course:  https://education-web-server-rahatbinoamr.vercel.app/
+2.course id : https://education-web-server-rahatbinoamr.vercel.app/:id
+example: https://education-web-server-rahatbinoamr.vercel.app/courses/0282e0e58a5c404fbd15261f11c2ab6a
+
+3.category: https://education-web-server-rahatbinoamr.vercel.app/CoursesCategory
+4.category id :https://education-web-server-rahatbinoamr.vercel.app/CoursesCategory/:id
+example:https://education-web-server-rahatbinoamr.vercel.app/CoursesCategory/01
+
 # My Project statement
 
 *** Client Site ***
