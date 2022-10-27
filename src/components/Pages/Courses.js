@@ -2,11 +2,15 @@ import React from 'react';
 import { Button, Card, Image } from 'react-bootstrap';
 import { FaEye, FaRegBookmark, FaShareAlt, FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Courses = () => {
     const course = useLoaderData()
     console.log(course)
     const { id, title, price,instructor, details, image_url, rating, total_view }  = course;
+    const handelToast = ()=>{
+        toast.success('Back to courses!', { autoClose: 500 })
+      }
     return (
         <Card className="mb-5 mt-4">
         <Card.Header className='d-flex justify-content-between align-items-center'>
@@ -34,7 +38,7 @@ const Courses = () => {
                 {details}
             </Card.Text>
             <div> <h3> Price: $<span> {price} </span> </h3> </div> 
-            <Link to='/home'><Button style={{width:'100%'}}> Go All Courses </Button></Link>
+            <Link to='/home'><Button onClick={handelToast} style={{width:'100%'}}> Go All Courses </Button></Link>
         </Card.Body>
         <Card.Footer className="d-flex justify-content-between">
             <div>
